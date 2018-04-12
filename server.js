@@ -10,7 +10,7 @@ const database = {
     users: [
         {
             id: 123,
-            name: 'Huw',
+            username: 'Huw',
             email: 'huw.burton@btinternet.com',
             password: 'cookies',
             entries: 0,
@@ -18,7 +18,7 @@ const database = {
         },
         {
             id: 124,
-            name: 'Alison',
+            username: 'Alison',
             email: 'alison.burton@btinternet.com',
             password: 'bananas',
             entries: 0,
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 app.post('/signin', (req, res) => {
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-        res.json('success')
+        res.json(database.users[0])
     } else {
         res.status(400).json('error logging in!')
     }
@@ -42,10 +42,10 @@ app.post('/signin', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    const { name, email, password } = req.body;
+    const { username, email, password } = req.body;
     database.users.push({
         id: 125,
-        name: name,
+        username: username,
         email: email,
         password: password,
         entries: 0,
