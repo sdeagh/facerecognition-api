@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.json(database.users)
+    res.send('working...')
 })
 
 app.post('/signin', (req, res) => {
@@ -27,7 +27,6 @@ app.post('/signin', (req, res) => {
         .from('login')
         .where('email', req.body.email)
         .then(data => {
-            console.log(data[0])
             const isValid = bcrypt.compareSync(req.body.password, data[0].hash)
             if (isValid) {
                 return db.select('*')
