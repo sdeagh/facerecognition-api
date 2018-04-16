@@ -10,6 +10,6 @@ const imageCount = (req, res, db) => {
         .catch(err => res.status(400).json("Unable to get entries"))
 }
 
-modeule.exports = {
+module.exports = {
     imageCount
 }
